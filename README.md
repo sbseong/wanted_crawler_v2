@@ -11,11 +11,11 @@ $ conda activate wanted
 ```
 $ pip install -r requirements.txt
 ```
-### 2-1. `wanted_search.py` 실행
+### 2-1. (옵션 1) `wanted_search.py` 실행
 ```
 python wanted_search.py
 ```
-### 2-2. `url_wanted.py` 실행 : 원하는 페이지의 url을 복붙하면 그 페이지를 크롤링 해줌
+### 2-2. (옵션 2)`url_wanted.py` 실행 : 원하는 페이지의 url을 복붙하면 그 페이지를 크롤링 해줌
 ```
 python url_wanted.py
 ```
