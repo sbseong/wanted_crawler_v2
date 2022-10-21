@@ -11,7 +11,13 @@ $ conda activate wanted
 ```
 $ pip install -r requirements.txt
 ```
-### 2. `wanted_search.py` 실행
+### 2-1. `wanted_search.py` 실행
+```
+### 2-2. `url_wanted.py` 실행 : 원하는 페이지의 url을 복붙하면 그 페이지를 크롤링 해줌
+```
+### 3. 여러 DB를 하나 머지하는 방법
+#### 3-1. 여러 DB를 하나의 폴더에 만들어서 넣어둡니다. 
+#### 3-2. `auto_merge_to_csv.py` 실행
 ```
 python wanted_search.py
 ```
