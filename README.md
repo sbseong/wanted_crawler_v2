@@ -1,5 +1,6 @@
 # wanted_crawler_v2
 DB화를 통한 속도 Up, 검색기능 추가한 버전
+소요시간 대략 1시간
 
 # 사용법
 ### 0. 가상환경 생성 및 활성화 (Optional)
@@ -11,18 +12,11 @@ $ conda activate wanted
 ```
 $ pip install -r requirements.txt
 ```
-### 2-1. (옵션 1) `wanted_search.py` 실행
+### 2. main.py 실행
+main.py을 한 번만 실행하면 크롤링부터 구글 시트 입력까지 완료됩니다.
 ```
-python wanted_search.py
+$ python main.py
 ```
-### 2-2. (옵션 2)`url_wanted.py` 실행 : 원하는 페이지의 url을 복붙하면 그 페이지를 크롤링 해줌
-```
-python url_wanted.py
-```
-### 3. 여러 DB를 하나 머지하는 방법
-#### 3-1. 여러 DB를 하나의 폴더에 만들어서 넣어둡니다. 
-#### 3-2. `auto_merge_to_csv.py` 실행
-
 
 ## 💡 크롤러가 활용하는 창이 모니터에 노출되어 있으면 수집이 더 잘 됩니다.
 
