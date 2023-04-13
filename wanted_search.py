@@ -59,7 +59,6 @@ def init_database():
         JD_id INTEGER PRIMARY KEY AUTOINCREMENT,
         CoName TEXT,
         Jikmu TEXT,
-        CoTag TEXT,
         JobToDo TEXT,
         requirement TEXT,
         preferential TEXT,
@@ -108,6 +107,7 @@ def url_crawler(driver, category_or_searchword):
     try :
         driver.find_element(By.CLASS_NAME,'MaintenancePopUp_Maintenance_close__cHJg7').click()
     except:
+        print("no_popup")
         pass
 
     timeinfo = init_database()
@@ -121,10 +121,11 @@ def url_crawler(driver, category_or_searchword):
     scroll_down(driver)
 
     ### 공고 URL 모으는 코드 ###
-    elems = driver.find_elements(By.CLASS_NAME, 'Card_className__u5rsb')
+    elems = driver.find_elements(By.CLASS_NAME, 'JobCard_container__FqChn')# 1 : JobList_container__Z19Mc #'Card_className__u5rsb')
     conn, cur = get_conn_cur(timeinfo)
     URL_list = []
-    for elem in elems[0:3]:
+    # print(elems) # list extraction error check :: checked.. OK!
+    for elem in elems:
         ### url, 공고 제목, 회사 데이터 수집 ###
         temp_card = elem.find_element(By.TAG_NAME, 'a')
         temp_text = temp_card.text
@@ -204,8 +205,8 @@ def jd_info_crawler(driver, timeinfo, sleep_time):
             location = text_split[1].lstrip('근무지역')
 
             SQL_INSERT_JDINFO = f"""
-            INSERT INTO JDinfo (CoName, Jikmu, CoTag, JobToDo, requirement, preferential, welfare, skills, close_date, location, url) 
-            VALUES ('{co_name}', '{jikmu}','{co_tag}', '{JobToDo}', '{requirement}', '{preferential}', '{welfare}', '{skills}', '{close_date}', '{location}', '{URL}')
+            INSERT INTO JDinfo (CoName, Jikmu, JobToDo, requirement, preferential, welfare, skills, close_date, location, url) 
+            VALUES ('{co_name}', '{jikmu}', '{JobToDo}', '{requirement}', '{preferential}', '{welfare}', '{skills}', '{close_date}', '{location}', '{URL}')
             """
             cur.execute(SQL_INSERT_JDINFO)
             conn.commit()
